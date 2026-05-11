@@ -4,7 +4,7 @@
 
 ## What I Do
 
-I architect **end-to-end data platforms** and **AI-driven solutions** for high-growth environments—from cloud infrastructure (AWS/GCP) to production-ready ML pipelines. My work spans **strategic consulting** (innovation, finance, analytics) and **hands-on engineering** (real-time optimization, predictive modeling, agentic integration).
+I architect **end-to-end data platforms** and **solutions** for high-growth environments—from cloud infrastructure (AWS/GCP) to production-ready ML pipelines. My work spans **strategic consulting** (innovation, finance, analytics) and **hands-on engineering** (real-time optimization, predictive modeling, agentic integration).
 
 ## Core Focus
 
