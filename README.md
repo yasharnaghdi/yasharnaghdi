@@ -1,4 +1,4 @@
-# Yashar Naghdi | Data Systems Architect & AI Strategist
+# Yashar Naghdi | Senior Software Developer & AI Strategist
 
 > Building intelligent systems that bridge engineering excellence and business impact
 
