@@ -1,8 +1,6 @@
 # Yashar Naghdi | Senior Software Developer & AI Strategist
 
-> Building intelligent systems that
-
-## Core Focus
+> Building intelligent systems that correspond to :
 
 **Analytics Architecture** • Designing scalable data ecosystems with PostgreSQL, S3, and serverless compute  
 **AI Engineering** • LSTM/SARIMA forecasting, NLP, recommendation systems, GenAI integration  
