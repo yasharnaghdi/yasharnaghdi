@@ -11,4 +11,4 @@
 
 ## Recent Build
 
-**CYGNET QA** – Real-time carbon intensity intelligence platform ingesting ENTSO-E data with dashboards and multi-country forecasting models.
+**CYGNET QA** carbon intensity intelligence platform ingesting ENTSO-E data with dashboards and multi-country forecasting models.
