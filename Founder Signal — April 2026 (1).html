@@ -1,0 +1,1779 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Launch Intelligence — June 2026 | Yashar Naghdi</title>
+  <meta name="description" content="A systematic analysis of the April–May 2026 cohort: founder patterns, capital allocation signals, and positioning gaps for portfolio managers and venture allocators." />
+  <meta property="og:title" content="Launch Intelligence — June 2026" />
+  <meta property="og:description" content="10 launches. $248M deployed. A pattern analysis built for venture allocators." />
+  <meta property="og:type" content="article" />
+
+  <!--
+    FONTS
+    Display  → Editorial New (Pangram Pangram) — institutional serif authority
+    Body     → Inter (Google) — global corporate standard, max legibility
+    Data     → IBM Plex Mono — financial/technical data contexts
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Inter + IBM Plex Mono from Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <!-- Editorial New via Pangram Pangram CDN mirror on Fontshare -->
+  <link href="https://api.fontshare.com/v2/css?f[]=editorial-new@400,400i,700,700i&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       DESIGN TOKENS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    :root {
+      /* Type scale */
+      --ts-xs:   clamp(0.6875rem, 0.65rem + 0.2vw,  0.75rem);
+      --ts-sm:   clamp(0.8125rem, 0.77rem + 0.25vw, 0.875rem);
+      --ts-base: clamp(0.9375rem, 0.9rem  + 0.2vw,  1rem);
+      --ts-md:   clamp(1rem,      0.95rem + 0.3vw,  1.125rem);
+      --ts-lg:   clamp(1.25rem,   1rem    + 0.8vw,  1.75rem);
+      --ts-xl:   clamp(1.75rem,   1.2rem  + 1.5vw,  2.75rem);
+      --ts-2xl:  clamp(2.5rem,    1.4rem  + 3.5vw,  5rem);
+
+      /* Spacing */
+      --s1:.25rem; --s2:.5rem; --s3:.75rem; --s4:1rem; --s5:1.25rem;
+      --s6:1.5rem; --s8:2rem;  --s10:2.5rem;--s12:3rem;--s16:4rem;
+      --s20:5rem;  --s24:6rem;
+
+      /* Typography */
+      --f-display: 'Editorial New', 'Playfair Display', Georgia, serif;
+      --f-body:    'Inter', -apple-system, 'Helvetica Neue', sans-serif;
+      --f-data:    'IBM Plex Mono', 'Courier New', monospace;
+
+      /* Layout */
+      --col-art:  740px;
+      --col-wide: 1100px;
+      --ease: 150ms cubic-bezier(0.16,1,0.3,1);
+      --r-sm:.25rem; --r-md:.375rem; --r-lg:.5rem; --r-xl:.75rem; --r-full:9999px;
+    }
+
+    /* ── LIGHT (default) ─────────────────────────────────────
+       Palette: slate-white substrate, charcoal text, forest-green
+       accent — institutional, asset management grade
+    ──────────────────────────────────────────────────────── */
+    :root, [data-theme="light"] {
+      --bg:        #f7f7f6;
+      --bg-2:      #efefed;
+      --bg-3:      #e8e7e4;
+      --surf:      #ffffff;
+      --b:         #dddbd6;      /* border */
+      --b-sub:     #e9e8e5;      /* border subtle */
+      --tx:        #0f0f0e;      /* primary text */
+      --tx-2:      #3d3d39;      /* secondary */
+      --tx-3:      #8e8d88;      /* muted */
+      --tx-4:      #c2c0bb;      /* faint */
+
+      /* Accent: forest green — performance, conviction, allocation */
+      --ac:        #1a5c3a;
+      --ac-mid:    #2d7a52;
+      --ac-bg:     rgba(26,92,58,0.07);
+      --ac-border: rgba(26,92,58,0.2);
+
+      /* Status */
+      --red:       #7a1f2e;  --red-bg:  rgba(122,31,46,0.07);
+      --amber:     #7a4800;  --amb-bg:  rgba(122,72,0,0.07);
+      --blue:      #1a3f6b;  --blue-bg: rgba(26,63,107,0.07);
+
+      --sh-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --sh-md: 0 3px 12px rgba(0,0,0,0.07);
+    }
+
+    /* ── DARK ────────────────────────────────────────────────
+       Deep slate — Bloomberg Terminal energy, readable
+    ──────────────────────────────────────────────────────── */
+    [data-theme="dark"] {
+      --bg:        #0d0e0c;
+      --bg-2:      #131410;
+      --bg-3:      #1a1c17;
+      --surf:      #181a15;
+      --b:         #2a2d26;
+      --b-sub:     #1f2119;
+      --tx:        #e4e4df;
+      --tx-2:      #9e9e97;
+      --tx-3:      #575750;
+      --tx-4:      #33332e;
+      --ac:        #4caf7d;
+      --ac-mid:    #3d9669;
+      --ac-bg:     rgba(76,175,125,0.1);
+      --ac-border: rgba(76,175,125,0.22);
+      --red:       #c94b5e;  --red-bg:  rgba(201,75,94,0.1);
+      --amber:     #c98a2a;  --amb-bg:  rgba(201,138,42,0.1);
+      --blue:      #5c9bd6;  --blue-bg: rgba(92,155,214,0.1);
+      --sh-sm: 0 1px 2px rgba(0,0,0,0.35);
+      --sh-md: 0 3px 12px rgba(0,0,0,0.45);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       BASE RESET
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; scroll-padding-top:64px;
+           -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+    body { min-height:100dvh; font-family:var(--f-body); font-size:var(--ts-md);
+           color:var(--tx); background:var(--bg); line-height:1.65; }
+    h1,h2,h3,h4,h5 { text-wrap:balance; }
+    p,li,td { text-wrap:pretty; }
+    a { color:var(--ac); text-decoration:none; transition:opacity var(--ease); }
+    a:hover { opacity:.7; }
+    button { cursor:pointer; border:none; background:none; font:inherit; color:inherit; }
+    :focus-visible { outline:2px solid var(--ac); outline-offset:3px; border-radius:var(--r-sm); }
+    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; } }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       LAYOUT
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .w      { max-width:var(--col-wide); margin:0 auto; padding:0 var(--s6); }
+    .w--art { max-width:var(--col-art);  margin:0 auto; padding:0 var(--s6); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       TOP BAR
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .topbar {
+      position:sticky; top:0; z-index:200;
+      background:color-mix(in srgb, var(--bg) 90%, transparent);
+      backdrop-filter:blur(14px) saturate(1.4);
+      border-bottom:1px solid var(--b-sub);
+    }
+    .topbar__inner {
+      height:52px; display:flex; align-items:center;
+      justify-content:space-between; gap:var(--s4);
+    }
+    .topbar__left { display:flex; align-items:center; gap:var(--s5); }
+    .topbar__name {
+      font-family:var(--f-body); font-weight:600; font-size:var(--ts-sm);
+      letter-spacing:0.01em; color:var(--tx);
+    }
+    .topbar__name:hover { opacity:.6; color:var(--tx); }
+    .topbar__divider { width:1px; height:16px; background:var(--b); }
+    .topbar__section { font-size:var(--ts-xs); font-weight:500; color:var(--tx-3);
+                       text-transform:uppercase; letter-spacing:0.07em; }
+    .topbar__right { display:flex; align-items:center; gap:var(--s3); }
+    .topbar__date { font-family:var(--f-data); font-size:var(--ts-xs); color:var(--tx-3); }
+    .theme-btn {
+      width:30px; height:30px; border-radius:var(--r-full); display:flex;
+      align-items:center; justify-content:center; color:var(--tx-3);
+      transition:color var(--ease), background var(--ease);
+    }
+    .theme-btn:hover { color:var(--tx); background:var(--bg-3); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       COVER / MASTHEAD
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .cover {
+      padding:clamp(var(--s16),9vw,var(--s24)) 0 clamp(var(--s12),5vw,var(--s16));
+      border-bottom:2px solid var(--tx);
+    }
+    .cover__label {
+      display:flex; align-items:center; gap:var(--s3);
+      font-family:var(--f-body); font-size:var(--ts-xs); font-weight:600;
+      text-transform:uppercase; letter-spacing:0.1em; color:var(--tx-3);
+      margin-bottom:var(--s6);
+    }
+    .cover__label-line { flex:1; max-width:36px; height:1px; background:var(--b); }
+    .cover__title {
+      font-family:var(--f-display);
+      font-size:var(--ts-2xl);
+      font-weight:400;
+      letter-spacing:-0.025em;
+      line-height:1.02;
+      color:var(--tx);
+      margin-bottom:var(--s6);
+    }
+    .cover__title em { font-style:italic; }
+    .cover__deck {
+      font-size:var(--ts-lg); color:var(--tx-2); font-weight:300;
+      max-width:56ch; line-height:1.55; margin-bottom:var(--s10);
+    }
+    .cover__meta {
+      display:flex; flex-wrap:wrap; align-items:center; gap:var(--s4);
+      padding-top:var(--s6); border-top:1px solid var(--b);
+    }
+    .meta-author { font-size:var(--ts-sm); font-weight:600; color:var(--tx); }
+    .meta-dot { width:3px; height:3px; border-radius:50%; background:var(--tx-4); }
+    .meta-item { font-size:var(--ts-xs); color:var(--tx-3); }
+    .meta-tag {
+      font-size:var(--ts-xs); font-weight:600; letter-spacing:0.04em;
+      border:1px solid var(--b); border-radius:var(--r-sm);
+      padding:2px var(--s3); color:var(--tx-2);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       KPI ROW
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .kpi-row {
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:0;
+      border-bottom:1px solid var(--b);
+    }
+    @media (max-width:640px) { .kpi-row { grid-template-columns:1fr 1fr; } }
+    .kpi {
+      padding:var(--s8) var(--s6) var(--s6);
+      border-right:1px solid var(--b);
+    }
+    .kpi:last-child { border-right:none; }
+    @media (max-width:640px) { .kpi:nth-child(2){ border-right:none; } .kpi:nth-child(3){ border-top:1px solid var(--b); } }
+    .kpi__val {
+      font-family:var(--f-display); font-size:var(--ts-xl);
+      font-weight:400; color:var(--tx); letter-spacing:-0.02em;
+      line-height:1; margin-bottom:var(--s2);
+    }
+    .kpi__val--ac { color:var(--ac); }
+    .kpi__label { font-size:var(--ts-xs); font-weight:500; color:var(--tx-3);
+                  text-transform:uppercase; letter-spacing:0.07em; }
+    .kpi__sub { font-family:var(--f-data); font-size:var(--ts-xs); color:var(--tx-4); margin-top:var(--s1); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       TABLE OF CONTENTS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .toc { padding:var(--s6) 0; border-bottom:1px solid var(--b); }
+    .toc__inner { display:flex; flex-wrap:wrap; align-items:baseline; gap:var(--s2) var(--s6); }
+    .toc__head { font-size:var(--ts-xs); font-weight:700; text-transform:uppercase;
+                 letter-spacing:0.08em; color:var(--tx-3); margin-right:var(--s2); }
+    .toc__link { font-size:var(--ts-sm); font-weight:400; color:var(--tx-2); transition:color var(--ease); }
+    .toc__link:hover { color:var(--ac); opacity:1; }
+    .toc__sep { color:var(--tx-4); font-size:var(--ts-xs); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       SECTIONS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .section { padding:clamp(var(--s12),6vw,var(--s20)) 0; border-bottom:1px solid var(--b); }
+    .section:last-of-type { border-bottom:none; }
+
+    .sec-head { margin-bottom:var(--s10); }
+    .sec-num {
+      font-family:var(--f-data); font-size:var(--ts-xs); font-weight:500;
+      color:var(--tx-4); text-transform:uppercase; letter-spacing:0.1em;
+      margin-bottom:var(--s3); display:block;
+    }
+    .sec-title {
+      font-family:var(--f-display); font-size:var(--ts-xl);
+      font-weight:400; color:var(--tx); letter-spacing:-0.02em;
+      margin-bottom:var(--s3);
+    }
+    .sec-sub { font-size:var(--ts-base); color:var(--tx-2); max-width:60ch; line-height:1.6; font-weight:300; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       DATABASE — CONTROLS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .db-bar { display:flex; flex-wrap:wrap; gap:var(--s3); margin-bottom:var(--s5); }
+    .srch-wrap { position:relative; flex:1; min-width:220px; }
+    .srch-wrap svg { position:absolute; left:var(--s3); top:50%; transform:translateY(-50%);
+                     color:var(--tx-4); pointer-events:none; }
+    .srch {
+      width:100%; padding:var(--s3) var(--s3) var(--s3) calc(var(--s3)*2 + 14px);
+      border:1px solid var(--b); border-radius:var(--r-md);
+      background:var(--surf); color:var(--tx); font:inherit; font-size:var(--ts-sm);
+      transition:border-color var(--ease), box-shadow var(--ease);
+    }
+    .srch::placeholder { color:var(--tx-4); }
+    .srch:focus { outline:none; border-color:var(--ac); box-shadow:0 0 0 3px var(--ac-bg); }
+
+    .filters { display:flex; flex-wrap:wrap; gap:var(--s2); margin-bottom:var(--s8); }
+    .fchip {
+      font-size:var(--ts-xs); font-weight:600; letter-spacing:0.03em;
+      padding:4px var(--s4); border-radius:var(--r-sm);
+      border:1px solid var(--b); color:var(--tx-3);
+      background:var(--surf); cursor:pointer; white-space:nowrap;
+      transition:all var(--ease);
+    }
+    .fchip:hover, .fchip.on { border-color:var(--ac); color:var(--ac); background:var(--ac-bg); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       COMPANY CARDS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:var(--s4); }
+    .card {
+      background:var(--surf); border:1px solid var(--b); border-radius:var(--r-lg);
+      overflow:hidden; transition:border-color var(--ease), box-shadow var(--ease);
+      cursor:default;
+    }
+    .card:hover { border-color:color-mix(in srgb,var(--ac) 35%,var(--b)); box-shadow:var(--sh-sm); }
+
+    .card__body { padding:var(--s5) var(--s5) var(--s4); }
+    .card__row1 { display:flex; justify-content:space-between; align-items:flex-start; gap:var(--s3); margin-bottom:var(--s2); }
+    .card__name { font-family:var(--f-display); font-size:var(--ts-lg); font-weight:400;
+                  letter-spacing:-0.015em; color:var(--tx); line-height:1.1; }
+    .card__raise {
+      font-family:var(--f-data); font-size:var(--ts-xs); font-weight:500;
+      color:var(--ac); background:var(--ac-bg); border:1px solid var(--ac-border);
+      padding:3px var(--s3); border-radius:var(--r-sm); white-space:nowrap;
+      flex-shrink:0;
+    }
+    .card__desc { font-size:var(--ts-sm); color:var(--tx-2); line-height:1.6; margin-bottom:var(--s4); }
+    .card__tags { display:flex; flex-wrap:wrap; gap:var(--s2); margin-bottom:var(--s3); }
+    .tag {
+      font-size:var(--ts-xs); font-weight:600; letter-spacing:0.02em;
+      padding:2px var(--s2); border-radius:var(--r-sm);
+    }
+    .tag--s { color:var(--ac);   background:var(--ac-bg); }
+    .tag--i { color:var(--blue); background:var(--blue-bg); }
+    .tag--p { color:var(--tx-2); background:var(--bg-2); border:1px solid var(--b); }
+
+    .card__footer {
+      padding:var(--s3) var(--s5);
+      border-top:1px solid var(--b-sub);
+      background:var(--bg);
+      display:flex; justify-content:space-between; align-items:center; gap:var(--s3);
+    }
+    .card__hook { font-size:var(--ts-xs); color:var(--tx-3); font-style:italic;
+                  line-height:1.55; flex:1; }
+    .exp-btn {
+      display:flex; align-items:center; gap:4px; flex-shrink:0;
+      font-size:var(--ts-xs); font-weight:600; color:var(--ac);
+      transition:opacity var(--ease);
+    }
+    .exp-btn:hover { opacity:.7; }
+    .exp-btn svg { transition:transform var(--ease); }
+
+    .card__detail {
+      display:none; padding:var(--s5);
+      background:var(--bg); border-top:1px solid var(--b-sub);
+    }
+    .card__detail.open { display:block; }
+    .dl-grid { display:grid; grid-template-columns:1fr 1fr; gap:var(--s4); }
+    .dl { display:flex; flex-direction:column; gap:3px; }
+    .dl--full { grid-column:1/-1; }
+    .dl__k { font-size:var(--ts-xs); font-weight:700; text-transform:uppercase;
+              letter-spacing:0.07em; color:var(--tx-3); }
+    .dl__v { font-size:var(--ts-sm); color:var(--tx-2); line-height:1.6; }
+    .dl__v strong { color:var(--tx); font-weight:600; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       PATTERN CARDS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .pg { display:grid; grid-template-columns:1fr 1fr; gap:var(--s4); }
+    @media (max-width:640px) { .pg { grid-template-columns:1fr; } }
+    .pat {
+      padding:var(--s6); background:var(--surf);
+      border:1px solid var(--b); border-radius:var(--r-lg);
+      position:relative; overflow:hidden;
+    }
+    .pat::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:2px;
+    }
+    .pat--r::before { background:var(--red); }
+    .pat--g::before { background:var(--ac); }
+    .pat__badge {
+      display:inline-block; font-size:var(--ts-xs); font-weight:700;
+      text-transform:uppercase; letter-spacing:0.07em;
+      padding:2px var(--s2); border-radius:var(--r-sm);
+      margin-bottom:var(--s3);
+    }
+    .pat--r .pat__badge { color:var(--red); background:var(--red-bg); }
+    .pat--g .pat__badge { color:var(--ac);  background:var(--ac-bg); }
+    .pat__title { font-family:var(--f-display); font-size:var(--ts-lg); font-weight:400;
+                  color:var(--tx); margin-bottom:var(--s3); line-height:1.2; }
+    .pat__body { font-size:var(--ts-sm); color:var(--tx-2); line-height:1.7; }
+    .pills { display:flex; flex-wrap:wrap; gap:var(--s2); margin-top:var(--s4); }
+    .pill { font-size:var(--ts-xs); font-weight:600; padding:3px var(--s3); border-radius:var(--r-full); }
+    .pill--r { color:var(--red); background:var(--red-bg); }
+    .pill--g { color:var(--ac);  background:var(--ac-bg); }
+    .pill--a { color:var(--amber); background:var(--amb-bg); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       PEDIGREE TABLE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .tbl-wrap { overflow-x:auto; border:1px solid var(--b); border-radius:var(--r-lg); }
+    .tbl { width:100%; border-collapse:collapse; font-size:var(--ts-sm); }
+    .tbl thead { background:var(--bg-2); }
+    .tbl th {
+      text-align:left; padding:var(--s3) var(--s5);
+      font-size:var(--ts-xs); font-weight:700; text-transform:uppercase;
+      letter-spacing:0.07em; color:var(--tx-3);
+      border-bottom:2px solid var(--b);
+      white-space:nowrap;
+    }
+    .tbl td {
+      padding:var(--s4) var(--s5);
+      border-bottom:1px solid var(--b-sub);
+      color:var(--tx-2); vertical-align:top; line-height:1.55;
+    }
+    .tbl tr:last-child td { border-bottom:none; }
+    .tbl tr:hover td { background:var(--bg); }
+    .fn { font-weight:700; color:var(--tx); white-space:nowrap; }
+    .co { color:var(--ac); font-weight:600; white-space:nowrap; }
+    .score { display:inline-flex; align-items:center; gap:5px;
+              font-family:var(--f-data); font-size:var(--ts-xs); font-weight:500; }
+    .sd { width:6px; height:6px; border-radius:50%; }
+    .sc-hi { color:var(--ac); }   .sc-hi .sd { background:var(--ac); }
+    .sc-md { color:var(--amber); } .sc-md .sd { background:var(--amber); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       POSITIONING QUADRANT
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .qg { display:grid; grid-template-columns:1fr 1fr; gap:var(--s4); }
+    @media (max-width:600px) { .qg { grid-template-columns:1fr; } }
+    .quad {
+      padding:var(--s6); background:var(--surf);
+      border:1px solid var(--b); border-radius:var(--r-lg);
+    }
+    .quad__label {
+      font-size:var(--ts-xs); font-weight:700; text-transform:uppercase;
+      letter-spacing:0.08em; margin-bottom:var(--s3);
+    }
+    .quad--sat  .quad__label { color:var(--red); }
+    .quad--open .quad__label { color:var(--ac); }
+    .quad--act  .quad__label { color:var(--amber); }
+    .quad--clr  .quad__label { color:var(--blue); }
+    .quad--sat  { border-top:2px solid var(--red); }
+    .quad--open { border-top:2px solid var(--ac); }
+    .quad--act  { border-top:2px solid var(--amber); }
+    .quad--clr  { border-top:2px solid var(--blue); }
+    .quad__title { font-family:var(--f-display); font-size:var(--ts-md); font-weight:400;
+                   color:var(--tx); margin-bottom:var(--s2); }
+    .quad__body  { font-size:var(--ts-sm); color:var(--tx-2); line-height:1.65; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       LANGUAGE BANK
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .lg { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:var(--s4); }
+    .lc {
+      padding:var(--s5); background:var(--surf);
+      border:1px solid var(--b); border-radius:var(--r-lg);
+    }
+    .lc__cat { font-size:var(--ts-xs); font-weight:700; text-transform:uppercase;
+               letter-spacing:0.07em; color:var(--tx-3); margin-bottom:var(--s3); }
+    .lc__q {
+      font-family:var(--f-display); font-size:var(--ts-md); font-style:italic;
+      color:var(--tx); line-height:1.55; border-left:2px solid var(--b);
+      padding-left:var(--s4); margin-bottom:var(--s3);
+    }
+    .lc__src { font-size:var(--ts-xs); color:var(--tx-3); }
+    .freq-bar { height:2px; background:var(--b); border-radius:2px; margin-top:var(--s3); overflow:hidden; }
+    .freq-fill { height:100%; border-radius:2px; transition:width .8s ease; }
+    .freq-fill--sat   { background:var(--red); }
+    .freq-fill--mid   { background:var(--amber); }
+    .freq-fill--fresh { background:var(--ac); }
+    .freq-meta { display:flex; justify-content:space-between;
+                 font-family:var(--f-data); font-size:var(--ts-xs); color:var(--tx-4); margin-top:3px; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       PLAYBOOK STEPS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .steps { display:flex; flex-direction:column; gap:var(--s5); }
+    .step {
+      display:grid; grid-template-columns:52px 1fr; gap:var(--s5);
+      padding:var(--s6); background:var(--surf);
+      border:1px solid var(--b); border-radius:var(--r-lg);
+      transition:border-color var(--ease);
+    }
+    .step:hover { border-color:color-mix(in srgb,var(--ac) 35%,var(--b)); }
+    .step__n {
+      font-family:var(--f-display); font-size:var(--ts-xl); font-weight:400;
+      color:var(--tx-4); line-height:1; font-style:italic;
+    }
+    .step__title { font-family:var(--f-display); font-size:var(--ts-lg); font-weight:400;
+                   color:var(--tx); margin-bottom:var(--s3); letter-spacing:-0.01em; }
+    .step__body { font-size:var(--ts-sm); color:var(--tx-2); line-height:1.75; }
+    .step__body p+p { margin-top:var(--s3); }
+    .step__body ul { list-style:none; margin-top:var(--s3); display:flex;
+                     flex-direction:column; gap:var(--s2); }
+    .step__body li { padding-left:var(--s5); position:relative; }
+    .step__body li::before { content:'—'; position:absolute; left:0; color:var(--tx-4); }
+    .step__body strong { color:var(--tx); font-weight:600; }
+    .step__note {
+      margin-top:var(--s4); padding:var(--s4) var(--s5);
+      background:var(--bg-2); border-radius:var(--r-md);
+      font-size:var(--ts-sm); color:var(--tx-2);
+      border-left:2px solid var(--ac);
+    }
+    .step__note strong { color:var(--ac-mid); font-weight:600; }
+    @media (max-width:520px) { .step { grid-template-columns:1fr; } .step__n { display:none; } }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       PM ALLOCATION CALLOUT (new section)
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .alloc-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:var(--s4); }
+    @media (max-width:720px) { .alloc-grid { grid-template-columns:1fr; } }
+    .alloc-card {
+      padding:var(--s6); background:var(--surf);
+      border:1px solid var(--b); border-radius:var(--r-lg);
+    }
+    .alloc-card__rank {
+      font-family:var(--f-data); font-size:var(--ts-xs); font-weight:500;
+      color:var(--tx-3); text-transform:uppercase; letter-spacing:0.08em;
+      margin-bottom:var(--s3);
+    }
+    .alloc-card__title { font-family:var(--f-display); font-size:var(--ts-lg); font-weight:400;
+                         color:var(--tx); margin-bottom:var(--s3); }
+    .alloc-card__body { font-size:var(--ts-sm); color:var(--tx-2); line-height:1.65; margin-bottom:var(--s4); }
+    .alloc-card__signal {
+      display:flex; align-items:center; gap:var(--s2);
+      font-family:var(--f-data); font-size:var(--ts-xs); color:var(--tx-3);
+    }
+    .sig-bar-wrap { flex:1; height:4px; background:var(--b); border-radius:2px; overflow:hidden; }
+    .sig-bar { height:100%; border-radius:2px; background:var(--ac); }
+    .sig-label { font-weight:600; color:var(--ac); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       FOOTER
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .footer { padding:var(--s10) 0; }
+    .footer__inner {
+      display:flex; flex-wrap:wrap; align-items:center;
+      justify-content:space-between; gap:var(--s4);
+      border-top:2px solid var(--tx); padding-top:var(--s6);
+    }
+    .footer__name { font-family:var(--f-body); font-weight:600; font-size:var(--ts-sm); color:var(--tx); }
+    .footer__meta { font-family:var(--f-data); font-size:var(--ts-xs); color:var(--tx-3); text-align:right; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       UTIL
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+               overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border-width:0; }
+    .mt { margin-top:var(--s12); }
+  </style>
+</head>
+
+<body>
+
+<!-- ── TOP BAR ──────────────────────────────────────────── -->
+<header class="topbar">
+  <div class="w">
+    <div class="topbar__inner">
+      <div class="topbar__left">
+        <a href="/" class="topbar__name">Yashar Naghdi</a>
+        <span class="topbar__divider" aria-hidden="true"></span>
+        <span class="topbar__section">Market Intelligence</span>
+      </div>
+      <div class="topbar__right">
+        <span class="topbar__date">June 2026</span>
+        <button class="theme-btn" data-theme-toggle aria-label="Toggle theme">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ── COVER ────────────────────────────────────────────── -->
+<section class="cover">
+  <div class="w--art">
+    <div class="cover__label">
+      <span class="cover__label-line" aria-hidden="true"></span>
+      Venture Pattern Analysis
+    </div>
+    <h1 class="cover__title">Launch Intelligence<br/><em>June 2026</em></h1>
+    <p class="cover__deck">A systematic analysis of the April–May 2026 emerging cohort — covering founder pedigree, capital allocation patterns, wedge archetypes, and positioning gaps relevant to venture and growth allocators.</p>
+    <div class="cover__meta">
+      <span class="meta-author">Yashar Naghdi</span>
+      <span class="meta-dot" aria-hidden="true"></span>
+      <span class="meta-item">Published June 2026</span>
+      <span class="meta-dot" aria-hidden="true"></span>
+      <span class="meta-item">10 companies · $248M deployed</span>
+      <span class="meta-tag">Venture Allocation</span>
+      <span class="meta-tag">Founder Intelligence</span>
+      <span class="meta-tag">Pattern Analysis</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── KPI ROW ───────────────────────────────────────────── -->
+<div class="kpi-row">
+  <div class="kpi">
+    <div class="kpi__val">10</div>
+    <div class="kpi__label">Launches analysed</div>
+    <div class="kpi__sub">Apr – May 2026</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi__val kpi__val--ac">$248M</div>
+    <div class="kpi__label">Capital deployed</div>
+    <div class="kpi__sub">Seed through Series B</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi__val">6</div>
+    <div class="kpi__label">Wedge archetypes</div>
+    <div class="kpi__sub">Across cohort</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi__val">3</div>
+    <div class="kpi__label">Overused formulas</div>
+    <div class="kpi__sub">Flagged below</div>
+  </div>
+</div>
+
+<!-- ── TOC ───────────────────────────────────────────────── -->
+<nav class="toc" aria-label="Contents">
+  <div class="w">
+    <div class="toc__inner">
+      <span class="toc__head">Contents</span>
+      <a href="#database" class="toc__link">I. Launch Index</a>
+      <span class="toc__sep" aria-hidden="true">·</span>
+      <a href="#patterns" class="toc__link">II. Pattern Analysis</a>
+      <span class="toc__sep" aria-hidden="true">·</span>
+      <a href="#pedigree" class="toc__link">III. Pedigree Matrix</a>
+      <span class="toc__sep" aria-hidden="true">·</span>
+      <a href="#allocation" class="toc__link">IV. Allocation View</a>
+      <span class="toc__sep" aria-hidden="true">·</span>
+      <a href="#language" class="toc__link">V. Investor Language</a>
+      <span class="toc__sep" aria-hidden="true">·</span>
+      <a href="#playbook" class="toc__link">VI. Positioning Playbook</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- I. LAUNCH INDEX ───────────────────────────────────── -->
+<!-- ══════════════════════════════════════════════════════ -->
+<section class="section" id="database">
+  <div class="w">
+    <div class="sec-head">
+      <span class="sec-num">Section I</span>
+      <h2 class="sec-title">April–May 2026 Launch Index</h2>
+      <p class="sec-sub">Every notable stealth exit and seed or Series A from the period. Searchable and filterable by sector.</p>
+    </div>
+
+    <div class="db-bar">
+      <div class="srch-wrap">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input class="srch" id="srchInput" type="search" placeholder="Search company, sector, investor, founder keyword…" aria-label="Search" />
+      </div>
+    </div>
+    <div class="filters" role="group" aria-label="Sector filter">
+      <button class="fchip on" data-f="all">All sectors</button>
+      <button class="fchip" data-f="cyber">Cybersecurity</button>
+      <button class="fchip" data-f="data">Data / AI</button>
+      <button class="fchip" data-f="fintech">Fintech</button>
+      <button class="fchip" data-f="quantum">Deep Tech</button>
+    </div>
+
+    <div class="grid" id="cardGrid">
+
+      <!-- ARTEMIS -->
+      <article class="card" data-s="cyber" data-q="artemis cybersecurity ai detection felicis first round hirshberg shiebler aws abnormal mercury wix lemonade">
+        <div class="card__body">
+          <div class="card__row1">
+            <div class="card__name">Artemis</div>
+            <div class="card__raise">$70M · Seed + A</div>
+          </div>
+          <p class="card__desc">AI-native security platform that builds continuous behavioural baselines per organisation, detects anomalies at machine speed, and auto-executes containment responses before spread.</p>
+          <div class="card__tags">
+            <span class="tag tag--s">Cybersecurity</span>
+            <span class="tag tag--i">Felicis · First Round</span>
+            <span class="tag tag--p">AWS + Abnormal AI</span>
+          </div>
+        </div>
+        <div class="card__footer">
+          <span class="card__hook">"Traditional architectures were not built for what companies need in the age of AI."</span>
+          <button class="exp-btn" onclick="expand(this)" aria-expanded="false">
+            Detail <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+        <div class="card__detail">
+          <div class="dl-grid">
+            <div class="dl"><div class="dl__k">Founders</div><div class="dl__v"><strong>Shachar Hirshberg</strong> — ex-AWS product. <strong>Dan Shiebler</strong> — head of AI, Abnormal Security; ML lead, Twitter.</div></div>
+            <div class="dl"><div class="dl__k">Timing argument</div><div class="dl__v">CrowdStrike data: dwell time compressed dramatically in 2025. Attacks execute before rule-based tools generate an alert.</div></div>
+            <div class="dl"><div class="dl__k">Wedge</div><div class="dl__v">Per-org behavioural baseline → real-time anomaly detection → automated containment. Zero rule configuration required.</div></div>
+            <div class="dl"><div class="dl__k">Early revenue</div><div class="dl__v">Mercury · Wix · Lemonade · Abnormal AI. Multiple 7-figure contracts closed via word of mouth before announcement.</div></div>
+            <div class="dl dl--full"><div class="dl__k">Investor language — Jake Storm, Felicis</div><div class="dl__v">"AI is pushing the industry back toward a centralised brain for security — one system that ingests data, reasons across it, and acts in real time." Positioned as next-generation Splunk built for AI-era threats.</div></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- HILBERT -->
+      <article class="card" data-s="data" data-q="hilbert a16z andreessen ai growth data b2c walmart freshdirect nazli tan analytics">
+        <div class="card__body">
+          <div class="card__row1">
+            <div class="card__name">Hilbert</div>
+            <div class="card__raise">$28M · Series A</div>
+          </div>
+          <p class="card__desc">AI infrastructure that unifies B2C enterprise data across silos, applies deep learning to predict growth levers, and quantifies the dollar impact of each recommended action.</p>
+          <div class="card__tags">
+            <span class="tag tag--s">Data / AI</span>
+            <span class="tag tag--i">Andreessen Horowitz</span>
+            <span class="tag tag--p">B2C analytics operator</span>
+          </div>
+        </div>
+        <div class="card__footer">
+          <span class="card__hook">"Businesses relying solely on agents will not achieve significant, compounding growth metrics."</span>
+          <button class="exp-btn" onclick="expand(this)" aria-expanded="false">
+            Detail <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+        <div class="card__detail">
+          <div class="dl-grid">
+            <div class="dl"><div class="dl__k">Founder</div><div class="dl__v"><strong>Nazli Tan</strong> — B2C retail analytics background. SF-based. Product described as a "WTF product" by first viewers.</div></div>
+            <div class="dl"><div class="dl__k">Timing argument</div><div class="dl__v">LLMs commoditised analysis. Scarce resource shifted to data unification and implementation. Companies need infrastructure, not more AI features.</div></div>
+            <div class="dl dl--full"><div class="dl__k">Customers</div><div class="dl__v">Walmart · FreshDirect · Blank Street · Levain. Contract values range from several hundred thousand to several million dollars.</div></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- PILLAR -->
+      <article class="card" data-s="fintech" data-q="pillar fintech commodity hedging a16z harsha ramesh deshpande macro trader import export SME autonomous">
+        <div class="card__body">
+          <div class="card__row1">
+            <div class="card__name">Pillar</div>
+            <div class="card__raise">$20M · Seed</div>
+          </div>
+          <p class="card__desc">Autonomous hedging platform for commodity-driven SMEs — ingests ERP and cash flow data, continuously analyses exposure across commodities, FX, and freight, and executes hedge positions with human approval gates.</p>
+          <div class="card__tags">
+            <span class="tag tag--s">Fintech / RiskTech</span>
+            <span class="tag tag--i">a16z · Dara Khosrowshahi</span>
+            <span class="tag tag--p">Macro trader + SME operator</span>
+          </div>
+        </div>
+        <div class="card__footer">
+          <span class="card__hook">"Sophisticated institutions had the tools. The manufacturers driving global trade had nothing."</span>
+          <button class="exp-btn" onclick="expand(this)" aria-expanded="false">
+            Detail <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+        <div class="card__detail">
+          <div class="dl-grid">
+            <div class="dl"><div class="dl__k">Founders</div><div class="dl__v"><strong>Harsha Ramesh</strong> (CEO) — managed derivative books for Fortune 500s; operated an import-export SME. <strong>Chinmay Deshpande</strong> (CTO). Founded 2023.</div></div>
+            <div class="dl"><div class="dl__k">Wedge</div><div class="dl__v">Ingest existing data (ERP, spreadsheets, WhatsApp) → automated exposure analysis → auto-execute with human approval. Zero institutional infrastructure required on the customer side.</div></div>
+            <div class="dl dl--full"><div class="dl__k">Key framing</div><div class="dl__v">"Make hedging as accessible and ubiquitous as payments or accounting software." Turns a static, periodic decision into a continuous, autonomous system. Customers: Shibuya Sakura Industries · Sigma Recycling · United Metal Solutions Group.</div></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CAPSULE -->
+      <article class="card" data-s="cyber" data-q="capsule security agentic runtime AI naor paz lidan hazout unit 8200 F5 forgepoint lama CISA chris krebs">
+        <div class="card__body">
+          <div class="card__row1">
+            <div class="card__name">Capsule Security</div>
+            <div class="card__raise">$7M · Seed</div>
+          </div>
+          <p class="card__desc">Runtime security layer for enterprise AI agents — enforces trust inside the execution path to detect manipulation, abnormal behaviour, and data exfiltration at the moment of action, not after.</p>
+          <div class="card__tags">
+            <span class="tag tag--s">AgentSec</span>
+            <span class="tag tag--i">Lama Partners · Forgepoint</span>
+            <span class="tag tag--p">Unit 8200 · F5</span>
+          </div>
+        </div>
+        <div class="card__footer">
+          <span class="card__hook">"AI agents are a new class of privileged user — acting at machine speed without deterministic behaviour."</span>
+          <button class="exp-btn" onclick="expand(this)" aria-expanded="false">
+            Detail <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+        <div class="card__detail">
+          <div class="dl-grid">
+            <div class="dl"><div class="dl__k">Founders</div><div class="dl__v"><strong>Naor Paz</strong> (CEO, ex-F5, Unit 8200) · <strong>Lidan Hazout</strong> (CTO, ex-Securedtouch, Transmit Security).</div></div>
+            <div class="dl"><div class="dl__k">Validation</div><div class="dl__v">Advisory: Chris Krebs (inaugural CISA director) · Omer Grossman (ex-CyberArk global CIO) · Jim Routh (Fortune 500 CISO). Heavyweight validators compensate for absence of prior exits.</div></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ABOVE SECURITY -->
+      <article class="card" data-s="cyber" data-q="above security insider threat agentic aviv nahum amir boldo unit 8200 81 ballistic norwest ctrl sana trullion silverfort serial">
+        <div class="card__body">
+          <div class="card__row1">
+            <div class="card__name">Above Security</div>
+            <div class="card__raise">$50M · Seed + A</div>
+          </div>
+          <p class="card__desc">AI-native managed insider threat platform — a fleet of AI investigators that analyses human and machine behaviour to surface real risk with zero policies, rules, or configuration at deployment.</p>
+          <div class="card__tags">
+            <span class="tag tag--s">Cybersecurity</span>
+            <span class="tag tag--i">Ballistic · Norwest · Merlin</span>
+            <span class="tag tag--p">Unit 8200 · Two prior exits</span>
+          </div>
+        </div>
+        <div class="card__footer">
+          <span class="card__hook">Revenue-generating for 6 months before announcing. $43M Series A at 8 months old, 10 employees.</span>
+          <button class="exp-btn" onclick="expand(this)" aria-expanded="false">
+            Detail <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+        <div class="card__detail">
+          <div class="dl-grid">
+            <div class="dl"><div class="dl__k">Founders</div><div class="dl__v"><strong>Aviv Nahum</strong> (CEO, Unit 81, Ctrl → Sana) · <strong>Amir Boldo</strong> (CPTO, Unit 49, Trullion, ex-SVP R&D Silverfort). Both serial, both with exits.</div></div>
+            <div class="dl"><div class="dl__k">Speed signal</div><div class="dl__v">Seed and Series A closed within 6 months. 10 employees at $43M A. Ballistic and Norwest bet the team before the category was defined.</div></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Q-FACTOR -->
+      <article class="card" data-s="quantum" data-q="q-factor quantum neutral atom weizmann technion intel capital nfx nir davidson ofer firstenberg yoav sagi guy raz">
+        <div class="card__body">
+          <div class="card__row1">
+            <div class="card__name">Q-Factor</div>
+            <div class="card__raise">$24M · Seed</div>
+          </div>
+          <p class="card__desc">Full-scale neutral atom quantum computer commercialising decades of foundational lab research from Weizmann and Technion — with both institutions holding equity stakes via their technology transfer offices.</p>
+          <div class="card__tags">
+            <span class="tag tag--s">Quantum / Deep Tech</span>
+            <span class="tag tag--i">NFX · Intel Capital · TPY</span>
+            <span class="tag tag--p">Weizmann · Technion faculty</span>
+          </div>
+        </div>
+        <div class="card__footer">
+          <span class="card__hook">"The quantum computing industry needs a revolution, not an evolution." — Prof. Ofer Firstenberg</span>
+          <button class="exp-btn" onclick="expand(this)" aria-expanded="false">
+            Detail <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+        <div class="card__detail">
+          <div class="dl-grid">
+            <div class="dl"><div class="dl__k">Founders</div><div class="dl__v"><strong>Prof. Nir Davidson</strong> (Weizmann, 280 papers, ex-dean of physics) · <strong>Prof. Ofer Firstenberg</strong> (Weizmann, ex-Harvard/MIT) · <strong>Prof. Yoav Sagi</strong> (Technion) · <strong>Dr. Guy Raz</strong> (commercial operator).</div></div>
+            <div class="dl"><div class="dl__k">Structural edge</div><div class="dl__v">Weizmann and Technion are equity holders via Yeda tech transfer. Intel Capital co-invested immediately. Investors bought a protected IP portfolio built over decades, not a pitch deck.</div></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- NOVEE -->
+      <article class="card" data-s="cyber" data-q="novee cybersecurity offensive nation state AI unit 8200 talpiot prime minister ido geffen gon chalamish omer ninburg iron dome">
+        <div class="card__body">
+          <div class="card__row1">
+            <div class="card__name">Novee</div>
+            <div class="card__raise">$51.5M · Seed + A</div>
+          </div>
+          <p class="card__desc">Defensive security platform built on proprietary offensive AI systems — trained by former nation-state operators to model attacker decision trees, not detect known signatures.</p>
+          <div class="card__tags">
+            <span class="tag tag--s">Cybersecurity</span>
+            <span class="tag tag--p">Unit 8200 · Talpiot · PM Office</span>
+          </div>
+        </div>
+        <div class="card__footer">
+          <span class="card__hook">The founders built the offensive systems. The IP advantage is classified. No other team can replicate it.</span>
+          <button class="exp-btn" onclick="expand(this)" aria-expanded="false">
+            Detail <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+        <div class="card__detail">
+          <div class="dl-grid">
+            <div class="dl dl--full"><div class="dl__k">Founders</div><div class="dl__v"><strong>Ido Geffen</strong> (CEO, Unit 8200) · <strong>Gon Chalamish</strong> (CPO, Talpiot) · <strong>Omer Ninburg</strong> (CTO, PM's Office cyber unit). Led national Red Team ops including systems protecting Iron Dome. Eight months old at $51.5M.</div></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- FIG SECURITY -->
+      <article class="card" data-s="cyber" data-q="fig security stack monitoring unit 8200 mamram series A second order detection drift">
+        <div class="card__body">
+          <div class="card__row1">
+            <div class="card__name">Fig Security</div>
+            <div class="card__raise">$38M · Seed + A</div>
+          </div>
+          <p class="card__desc">Security stack monitoring platform — continuously verifies that detection tools and response rules remain calibrated as infrastructure changes, before attackers exploit the silent drift.</p>
+          <div class="card__tags">
+            <span class="tag tag--s">Cybersecurity</span>
+            <span class="tag tag--p">Unit 8200 · Mamram</span>
+          </div>
+        </div>
+        <div class="card__footer">
+          <span class="card__hook">"Fig watches your watchers." Second-order problem in a market fixated on first-order threats.</span>
+          <button class="exp-btn" onclick="expand(this)" aria-expanded="false">
+            Detail <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+        <div class="card__detail">
+          <div class="dl-grid">
+            <div class="dl"><div class="dl__k">Background</div><div class="dl__v">Veterans of Units 8200 and Mamram. North America expansion planned, headcount tripling post-raise.</div></div>
+            <div class="dl"><div class="dl__k">Differentiation</div><div class="dl__v">Not a detection layer — monitors whether existing detection is functioning. Addresses the rule-drift problem that infrastructure changes introduce silently over time.</div></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- WONDERFUL -->
+      <article class="card" data-s="data" data-q="wonderful enterprise AI agent platform series B insight index IVP bessemer vine datadog slack twilio network effects">
+        <div class="card__body">
+          <div class="card__row1">
+            <div class="card__name">Wonderful</div>
+            <div class="card__raise">$150M · Series B</div>
+          </div>
+          <p class="card__desc">Enterprise AI agent platform — the institutional signal that Insight, Index, IVP, and Bessemer are rotating from foundation model bets toward horizontal agent infrastructure with platform network effects.</p>
+          <div class="card__tags">
+            <span class="tag tag--s">Enterprise AI</span>
+            <span class="tag tag--i">Insight · Index · IVP · Bessemer</span>
+          </div>
+        </div>
+        <div class="card__footer">
+          <span class="card__hook">The investor syndicate is the data point — firms that scaled Datadog, Slack, Twilio all co-investing.</span>
+          <button class="exp-btn" onclick="expand(this)" aria-expanded="false">
+            Detail <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+        <div class="card__detail">
+          <div class="dl-grid">
+            <div class="dl dl--full"><div class="dl__k">Allocation signal</div><div class="dl__v">Series B led by Insight Partners, March 2026. Vine Ventures, Index, IVP, Bessemer co-investing. These firms backed the infrastructure layer in prior waves (Datadog, Twilio, Slack). Their current rotation toward agent platforms is a conviction signal for the entire category, not just this company.</div></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- SIMILE -->
+      <article class="card" data-s="data" data-q="simile AI human decision judgment series A index bain 100M hanabi capital expert knowledge moat">
+        <div class="card__body">
+          <div class="card__row1">
+            <div class="card__name">Simile</div>
+            <div class="card__raise">$100M · Series A</div>
+          </div>
+          <p class="card__desc">AI trained to replicate human expert decision-making — not generic LLM reasoning, but the pattern memory, institutional context, and consequence weighting of specific human judgment, applied at scale.</p>
+          <div class="card__tags">
+            <span class="tag tag--s">Enterprise AI</span>
+            <span class="tag tag--i">Index Ventures · Bain Capital</span>
+          </div>
+        </div>
+        <div class="card__footer">
+          <span class="card__hook">"LLMs reason generically. Experts reason from memory, context, and consequence weight. We train on the second thing."</span>
+          <button class="exp-btn" onclick="expand(this)" aria-expanded="false">
+            Detail <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+        <div class="card__detail">
+          <div class="dl-grid">
+            <div class="dl dl--full"><div class="dl__k">Market framing</div><div class="dl__v">LLMs are commoditised. The defensible moat is proprietary human decision data — organisations that have it win. $100M Series A led by Index Ventures with Bain Capital Ventures, Hanabi Capital, February 2026. The model is not the product — the institutional knowledge encoded in it is.</div></div>
+          </div>
+        </div>
+      </article>
+
+    </div><!-- /grid -->
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- II. PATTERN ANALYSIS ──────────────────────────────── -->
+<!-- ══════════════════════════════════════════════════════ -->
+<section class="section" id="patterns">
+  <div class="w">
+    <div class="sec-head">
+      <span class="sec-num">Section II</span>
+      <h2 class="sec-title">Pattern Analysis</h2>
+      <p class="sec-sub">Saturating formulas and outperforming strategies — built from comparing every launch in the cohort.</p>
+    </div>
+    <div class="pg">
+      <div class="pat pat--r">
+        <span class="pat__badge">Saturating</span>
+        <div class="pat__title">The "AI Fights AI" Narrative</div>
+        <div class="pat__body">Artemis executes this well — which is the problem. By Q3 2026, every cybersecurity launch will lead with this frame. It was fresh in April. It will be a table stake before year end. Do not enter this without a zero-to-one insight that goes beyond the frame.
+          <div class="pills"><span class="pill pill--r">Artemis owns the first-mover position</span><span class="pill pill--a">Still fundable, no longer differentiating</span></div>
+        </div>
+      </div>
+      <div class="pat pat--r">
+        <span class="pat__badge">Overused</span>
+        <div class="pat__title">Unit 8200 as Lead Credential</div>
+        <div class="pat__body">Four of ten launches in this cohort are Unit 8200-founded. Investors respond to it — but it is now expected signal in cyber, not exceptional signal. If you have it, let it validate your insight. It should not precede it.
+          <div class="pills"><span class="pill pill--r">4 of 10 launches this cohort</span><span class="pill pill--a">Credibility intact, novelty gone</span></div>
+        </div>
+      </div>
+      <div class="pat pat--r">
+        <span class="pat__badge">Table Stakes</span>
+        <div class="pat__title">"Zero Configuration, Deploys in Minutes"</div>
+        <div class="pat__body">Above Security's strongest commercial line — but Fig, Capsule, and Artemis all use the same claim. When every product in a category claims instant deployment, the claim carries no weight. It is now a requirement for consideration, not an argument for selection.
+          <div class="pills"><span class="pill pill--r">Used by 6 of 10 launches</span></div>
+        </div>
+      </div>
+      <div class="pat pat--g">
+        <span class="pat__badge">Outperforming</span>
+        <div class="pat__title">Operator-Founder in Underserved Verticals</div>
+        <div class="pat__body">Pillar's Harsha Ramesh traded derivatives institutionally, then ran an SME in the same market. He was the customer on both sides. This cross-background is nearly absent from the broader cohort and it raised at a16z with the Uber CEO co-investing at seed.
+          <div class="pills"><span class="pill pill--g">One company in this cohort using it</span><span class="pill pill--g">a16z doubled the thesis</span></div>
+        </div>
+      </div>
+      <div class="pat pat--g">
+        <span class="pat__badge">Outperforming</span>
+        <div class="pat__title">Infrastructure vs. Tooling Positioning</div>
+        <div class="pat__body">Hilbert does not sell analytics — it sells the data infrastructure beneath analytics. Pillar does not sell risk advice — it sells the autonomous execution substrate. This reframe justifies infrastructure multiples (8–12× ARR) rather than tool multiples (3–5×) and creates far stickier contracts.
+          <div class="pills"><span class="pill pill--g">Hilbert and Pillar both using it</span><span class="pill pill--g">Transferable across any vertical</span></div>
+        </div>
+      </div>
+      <div class="pat pat--g">
+        <span class="pat__badge">Underexploited</span>
+        <div class="pat__title">Second-Order Problem Framing</div>
+        <div class="pat__body">Fig solves broken defences, not attacks. Capsule secures AI agents inside applications, not the applications themselves. Targeting the meta-problem while everyone else competes for the object-level problem creates a new category, avoids direct competition, and typically yields shorter sales cycles.
+          <div class="pills"><span class="pill pill--g">Fig and Capsule both proving it</span><span class="pill pill--g">Creates new category</span></div>
+        </div>
+      </div>
+      <div class="pat pat--g">
+        <span class="pat__badge">Outperforming</span>
+        <div class="pat__title">Revenue Before Public Announcement</div>
+        <div class="pat__body">Above Security was generating revenue for six months before announcing. Artemis closed multiple 7-figure contracts via word of mouth before Felicis led the A. The current tier-1 bar is not product-market fit — it is demonstrated revenue at announcement. The seed-to-A arc is compressing accordingly.
+          <div class="pills"><span class="pill pill--g">Above: 6 months revenue → $50M raise</span><span class="pill pill--g">Artemis: WOM 7-fig deals → $70M</span></div>
+        </div>
+      </div>
+      <div class="pat pat--g">
+        <span class="pat__badge">Underexploited</span>
+        <div class="pat__title">Academic IP as Cap Table Signal</div>
+        <div class="pat__body">Q-Factor had Weizmann and Technion as equity holders before any investor saw a pitch. Institutional research organisations co-investing signals decades of protected prior art embedded in the cap table. Intel Capital and NFX moved immediately. Near-zero competition for this structure outside deep tech.
+          <div class="pills"><span class="pill pill--g">Defensible IP in the ownership structure</span><span class="pill pill--g">Minimal competition in most sectors</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- III. PEDIGREE MATRIX ──────────────────────────────── -->
+<!-- ══════════════════════════════════════════════════════ -->
+<section class="section" id="pedigree">
+  <div class="w">
+    <div class="sec-head">
+      <span class="sec-num">Section III</span>
+      <h2 class="sec-title">Pedigree Matrix</h2>
+      <p class="sec-sub">Every funded founder — background type, signal strength, and the factor that actually closed the round.</p>
+    </div>
+    <div class="tbl-wrap">
+      <table class="tbl" aria-label="Founder pedigree matrix">
+        <thead>
+          <tr>
+            <th>Founder(s)</th>
+            <th>Company</th>
+            <th>Background Type</th>
+            <th>Prior Signal</th>
+            <th>Score</th>
+            <th>Closing Factor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="fn">Hirshberg · Shiebler</span></td>
+            <td><span class="co">Artemis</span></td>
+            <td>Product + ML research</td>
+            <td>AWS product leader; head of AI, Abnormal Security</td>
+            <td><span class="score sc-hi"><span class="sd"></span>9/10</span></td>
+            <td>Shiebler spent years inside the problem at Abnormal — understood the attacker playbook from the defender side. Domain-insider credibility that no credential line replaces.</td>
+          </tr>
+          <tr>
+            <td><span class="fn">Nazli Tan</span></td>
+            <td><span class="co">Hilbert</span></td>
+            <td>B2C analytics operator</td>
+            <td>Enterprise analytics deployments for consumer brands</td>
+            <td><span class="score sc-md"><span class="sd"></span>7/10</span></td>
+            <td>Walmart and FreshDirect as paying customers before Series A. a16z backed the traction evidence, not the conceptual thesis.</td>
+          </tr>
+          <tr>
+            <td><span class="fn">Ramesh · Deshpande</span></td>
+            <td><span class="co">Pillar</span></td>
+            <td>Macro trader + SME operator</td>
+            <td>Managed derivative books for Fortune 500s; ran import-export SME in same market</td>
+            <td><span class="score sc-hi"><span class="sd"></span>9/10</span></td>
+            <td>Ramesh was the customer on both sides of the institutional-SME asymmetry simultaneously. The rarest background combination in the cohort — and the most defensible market insight.</td>
+          </tr>
+          <tr>
+            <td><span class="fn">Nahum · Boldo</span></td>
+            <td><span class="co">Above Security</span></td>
+            <td>Serial cyber founders, prior exits</td>
+            <td>Unit 8200 + Unit 81. Ctrl (→ Sana) + Trullion + Silverfort SVP R&D</td>
+            <td><span class="score sc-hi"><span class="sd"></span>10/10</span></td>
+            <td>Two exits, two elite units, complementary operator and technical backgrounds. Ballistic and Norwest bet the founders before the category existed as a defined market.</td>
+          </tr>
+          <tr>
+            <td><span class="fn">Geffen · Chalamish · Ninburg</span></td>
+            <td><span class="co">Novee</span></td>
+            <td>Nation-state offensive operators</td>
+            <td>PM's Office cyber unit, Talpiot, Red Team protecting Iron Dome</td>
+            <td><span class="score sc-hi"><span class="sd"></span>10/10</span></td>
+            <td>They built the offensive AI systems they now defend against. The proprietary knowledge is classified. That advantage is structurally irreplicable by any competitor.</td>
+          </tr>
+          <tr>
+            <td><span class="fn">Paz · Hazout</span></td>
+            <td><span class="co">Capsule</span></td>
+            <td>Security engineers</td>
+            <td>F5, Unit 8200; Securedtouch, Transmit Security</td>
+            <td><span class="score sc-md"><span class="sd"></span>7/10</span></td>
+            <td>Advisory board as deliberate credibility strategy: Chris Krebs (inaugural CISA director) and Fortune 500 CISOs. Compensated systematically for the absence of prior exits.</td>
+          </tr>
+          <tr>
+            <td><span class="fn">Davidson · Firstenberg · Sagi · Raz</span></td>
+            <td><span class="co">Q-Factor</span></td>
+            <td>Academic physicists + operator</td>
+            <td>Weizmann + Technion as equity holders via Yeda. 280 published papers.</td>
+            <td><span class="score sc-hi"><span class="sd"></span>9/10</span></td>
+            <td>The institutions themselves are shareholders. Intel Capital and NFX invested in a protected IP portfolio built over decades, not in a founding team's hypothesis.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Positioning quadrant -->
+    <div class="mt">
+      <div class="sec-head">
+        <span class="sec-num">Market Map</span>
+        <h3 class="sec-title">Positioning Landscape — June 2026</h3>
+      </div>
+      <div class="qg">
+        <div class="quad quad--sat">
+          <div class="quad__label">Saturated</div>
+          <div class="quad__title">AI Cybersecurity Detection</div>
+          <div class="quad__body">Artemis, Above, Novee, Fig, Capsule — five companies in thirty days. Behavioural anomaly, insider threat, runtime security. All tier-1 pedigree. Entry here without a genuinely novel insight is capital-inefficient and competitively hostile.</div>
+        </div>
+        <div class="quad quad--open">
+          <div class="quad__label">Opening — High conviction</div>
+          <div class="quad__title">SME Financial Infrastructure</div>
+          <div class="quad__body">Pillar is the only entry in this cohort. SME hedging, treasury automation, credit access — the gap between institutional tools and what operators can access is structural and persistent. Operator-founders with cross-background experience are nearly absent from venture formation pipelines.</div>
+        </div>
+        <div class="quad quad--act">
+          <div class="quad__label">Capital Rotating In</div>
+          <div class="quad__title">Enterprise Data Unification</div>
+          <div class="quad__body">Hilbert, Solid, and several others. a16z is explicitly backing the data-layer-beneath-AI thesis. Horizontal plays are now crowded. Defensible entry requires a specific vertical angle and demonstrated traction before raising.</div>
+        </div>
+        <div class="quad quad--clr">
+          <div class="quad__label">Structurally Clear</div>
+          <div class="quad__title">Deep-Tech / Academic Commercialisation</div>
+          <div class="quad__body">Q-Factor provides the template: foundational lab research, institutional equity stakes, one commercial operator alongside domain scientists. Quantum, materials science, advanced biology. Massively underfunded relative to addressable market and IP defensibility.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- IV. ALLOCATION VIEW (NEW — PM-SPECIFIC) ───────────── -->
+<!-- ══════════════════════════════════════════════════════ -->
+<section class="section" id="allocation">
+  <div class="w">
+    <div class="sec-head">
+      <span class="sec-num">Section IV</span>
+      <h2 class="sec-title">Allocation View</h2>
+      <p class="sec-sub">Category-level conviction assessment for venture and growth allocators. Based on cohort evidence, investor syndicate quality, and structural market conditions as of June 2026.</p>
+    </div>
+    <div class="alloc-grid">
+      <div class="alloc-card">
+        <div class="alloc-card__rank">High Conviction</div>
+        <div class="alloc-card__title">Agentic Security Infrastructure</div>
+        <div class="alloc-card__body">Capsule and Fig address second-order problems created by the adoption of AI agents. The category is newly defined, TAM is compounding as enterprise agentic deployment accelerates, and the first-mover advantage is not yet locked. Tier-1 investor backing (Forgepoint, Lama) provides quality signal without overcrowding.</div>
+        <div class="alloc-card__signal">
+          <span>Conviction</span>
+          <div class="sig-bar-wrap"><div class="sig-bar" style="width:88%"></div></div>
+          <span class="sig-label">High</span>
+        </div>
+      </div>
+      <div class="alloc-card">
+        <div class="alloc-card__rank">High Conviction</div>
+        <div class="alloc-card__title">SME Financial Automation</div>
+        <div class="alloc-card__body">Pillar's template — autonomous execution for underserved SME financial workflows — has near-zero venture competition, strong operator-founder signal, and a structural wedge that grows stickier as more company data is ingested. a16z and Dara Khosrowshahi co-investing at seed is an unusually strong conviction signal at this stage.</div>
+        <div class="alloc-card__signal">
+          <span>Conviction</span>
+          <div class="sig-bar-wrap"><div class="sig-bar" style="width:92%"></div></div>
+          <span class="sig-label">High</span>
+        </div>
+      </div>
+      <div class="alloc-card">
+        <div class="alloc-card__rank">Selective / Late Entry</div>
+        <div class="alloc-card__title">AI-Native Cybersecurity Detection</div>
+        <div class="alloc-card__body">Artemis, Above, and Novee all have strong product and team signals — but category formation is compressing fast. New entrants face four to five funded competitors with tier-1 backing, strong early revenue, and 12+ months of head start. Allocation at the company level requires exceptional pedigree differentiation or genuine technical novelty to justify entry in the current competitive environment.</div>
+        <div class="alloc-card__signal">
+          <span>Conviction</span>
+          <div class="sig-bar-wrap"><div class="sig-bar" style="width:48%"></div></div>
+          <span class="sig-label">Selective</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- V. INVESTOR LANGUAGE ──────────────────────────────── -->
+<!-- ══════════════════════════════════════════════════════ -->
+<section class="section" id="language">
+  <div class="w">
+    <div class="sec-head">
+      <span class="sec-num">Section V</span>
+      <h2 class="sec-title">Investor Language Bank</h2>
+      <p class="sec-sub">Phrases extracted from April–May 2026 announcement coverage. Frequency bar indicates saturation level — lower frequency means higher remaining differentiation value.</p>
+    </div>
+    <div class="lg">
+      <div class="lc">
+        <div class="lc__cat">Timing Claim — Saturated</div>
+        <div class="lc__q">"The threat is not hypothetical — it is already here."</div>
+        <div class="lc__src">Artemis, Above, Novee. All three lead with present-tense urgency in the same week.</div>
+        <div class="freq-bar"><div class="freq-fill freq-fill--sat" style="width:90%"></div></div>
+        <div class="freq-meta"><span>Saturation</span><span>9/10</span></div>
+      </div>
+      <div class="lc">
+        <div class="lc__cat">Problem Reframe — Medium signal</div>
+        <div class="lc__q">"Traditional architectures were not built for what companies need in the age of AI."</div>
+        <div class="lc__src">Artemis (Hirshberg). Positions the legacy stack as architecturally wrong, not merely slow. More precise than generic disruption language.</div>
+        <div class="freq-bar"><div class="freq-fill freq-fill--mid" style="width:52%"></div></div>
+        <div class="freq-meta"><span>Frequency</span><span>5/10</span></div>
+      </div>
+      <div class="lc">
+        <div class="lc__cat">Market Access — High differentiation</div>
+        <div class="lc__q">"Make hedging as accessible and ubiquitous as payments or accounting software."</div>
+        <div class="lc__src">Pillar (Ramesh). Democratisation framing from fintech, applied to risk — genuinely fresh in this context. The structure is portable to any institutional-grade function now accessible to SMEs.</div>
+        <div class="freq-bar"><div class="freq-fill freq-fill--fresh" style="width:15%"></div></div>
+        <div class="freq-meta"><span>Frequency</span><span>1.5/10</span></div>
+      </div>
+      <div class="lc">
+        <div class="lc__cat">AI ROI Problem — Saturated</div>
+        <div class="lc__q">"Companies investing heavily in AI without consistently reaping benefits."</div>
+        <div class="lc__src">Hilbert, Wonderful, Simile — every data and analytics launch in Q1–Q2 2026 used a variant of this sentence.</div>
+        <div class="freq-bar"><div class="freq-fill freq-fill--sat" style="width:85%"></div></div>
+        <div class="freq-meta"><span>Saturation</span><span>8.5/10</span></div>
+      </div>
+      <div class="lc">
+        <div class="lc__cat">Investor Framing — Reusable structure</div>
+        <div class="lc__q">"A centralised brain for operations — one system that ingests data, reasons across it, and acts in real time."</div>
+        <div class="lc__src">Jake Storm, Felicis (on Artemis). This is how a tier-1 investor reframes a product story for their own portfolio thesis. The structural pattern transfers to any category.</div>
+        <div class="freq-bar"><div class="freq-fill freq-fill--fresh" style="width:25%"></div></div>
+        <div class="freq-meta"><span>Frequency</span><span>2.5/10</span></div>
+      </div>
+      <div class="lc">
+        <div class="lc__cat">Category Creation — Highest value</div>
+        <div class="lc__q">"AI agents are becoming a new class of privileged user in the enterprise — acting at machine speed without deterministic behaviour."</div>
+        <div class="lc__src">Capsule (Paz, Zalkind). Creates a new noun — "privileged AI user class" — before the market had language for it. The most replicable language move in the cohort.</div>
+        <div class="freq-bar"><div class="freq-fill freq-fill--fresh" style="width:10%"></div></div>
+        <div class="freq-meta"><span>Frequency</span><span>1/10</span></div>
+      </div>
+      <div class="lc">
+        <div class="lc__cat">Revenue Signal — Structurally strongest</div>
+        <div class="lc__q">"Generating substantial revenue for six months, with enterprises deploying in minutes without writing a single policy, rule, or configuration."</div>
+        <div class="lc__src">Above Security launch statement. Revenue proof and zero-friction deployment in one sentence. Hardest to argue against in any investor conversation.</div>
+        <div class="freq-bar"><div class="freq-fill freq-fill--fresh" style="width:18%"></div></div>
+        <div class="freq-meta"><span>Frequency</span><span>1.8/10</span></div>
+      </div>
+      <div class="lc">
+        <div class="lc__cat">Academic Authority — Rare</div>
+        <div class="lc__q">"The quantum computing industry needs a revolution, not an evolution."</div>
+        <div class="lc__src">Q-Factor (Firstenberg). Academic founders rarely use declarative commercial framing. The contrast with scientific hedging makes it land harder — and signals commercial intent clearly to investors.</div>
+        <div class="freq-bar"><div class="freq-fill freq-fill--fresh" style="width:8%"></div></div>
+        <div class="freq-meta"><span>Frequency</span><span>0.8/10</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- VI. POSITIONING PLAYBOOK ──────────────────────────── -->
+<!-- ══════════════════════════════════════════════════════ -->
+<section class="section" id="playbook">
+  <div class="w--art">
+    <div class="sec-head">
+      <span class="sec-num">Section VI</span>
+      <h2 class="sec-title">Positioning Playbook</h2>
+      <p class="sec-sub">Seven moves — derived from what this cohort got right, what it converged on too quickly, and where the structural gaps remain open.</p>
+    </div>
+    <div class="steps">
+
+      <div class="step">
+        <div class="step__n">01</div>
+        <div>
+          <div class="step__title">Lead with the insight, not the credential</div>
+          <div class="step__body">
+            <p>Eight of ten founders in this cohort open with who they are. Investors have read fifty "ex-Unit 8200 founders" decks this month. The founders who break through open with the insight nobody else has articulated yet.</p>
+            <p>The template is Capsule: <strong>"AI agents are a new class of privileged user."</strong> That sentence did not exist before Paz said it. One sentence that creates a new mental model is your opening — not your prior employer.</p>
+            <ul>
+              <li>Write the insight in one sentence that makes the listener think they have not heard it framed that way before</li>
+              <li>Your credential should validate the insight, not precede it</li>
+              <li>If your strongest line is your pedigree, you have not found the insight yet</li>
+            </ul>
+            <div class="step__note"><strong>Test:</strong> Can someone who does not know you repeat your insight at a meeting the next morning? If not, it is not sharp enough.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step__n">02</div>
+        <div>
+          <div class="step__title">Specify the timing window with a data point</div>
+          <div class="step__body">
+            <p>Every founder uses urgency framing. Most do it vaguely — "AI is advancing rapidly" carries no information. The ones that close tier-1 rounds cite a specific event or measurement from the last twelve months that explains why the window is open now and will close.</p>
+            <p>Artemis cites the CrowdStrike dwell time report. Pillar cites the 2025 commodity volatility spike. Q-Factor cites the neutral-atom breakthrough that makes million-qubit systems feasible for the first time. Each is specific, recent, and verifiable.</p>
+            <ul>
+              <li>Identify the one data point or event that changed the equation in the last twelve months</li>
+              <li>Name the technical or economic unlock: what is structurally possible now that was not before</li>
+              <li>Name the consequence of waiting: what closes or gets captured by competitors in 18 months</li>
+            </ul>
+            <div class="step__note"><strong>Template:</strong> "[Event] in [date] changed [dynamic]. This means [unlock] is now achievable. Organisations that act within [window] capture [advantage]. Those that wait face [consequence]."</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step__n">03</div>
+        <div>
+          <div class="step__title">Find the second-order problem</div>
+          <div class="step__body">
+            <p>The most overcrowded position in any hot market is the obvious first-order problem. Five companies in this cohort target cybersecurity detection. Three target AI ROI and data infrastructure. The companies creating genuinely new categories attacked one level above these.</p>
+            <p>Fig does not solve attacks — it solves broken defences. Capsule does not secure applications — it secures AI agents operating inside applications. Hilbert does not provide AI — it provides the data infrastructure that makes AI work. In each case, the second-order problem is less contested, more specific, and has cleaner ROI.</p>
+            <ul>
+              <li>Ask: what breaks because of the first-order problem that nobody is currently addressing?</li>
+              <li>Ask: what new problem is created when the first-order solution is adopted? That is often the highest-value wedge.</li>
+              <li>The second-order problem typically has shorter procurement cycles — the buyer can see the cost of not solving it immediately</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step__n">04</div>
+        <div>
+          <div class="step__title">Your wedge is a workflow, not a feature</div>
+          <div class="step__body">
+            <p>Every company in this cohort that closed a fast round owns a specific workflow on day one — not a capability. Pillar owns the hedging execution workflow. Above owns the insider investigation workflow. Artemis owns the alert-triage-and-response workflow.</p>
+            <p>A feature is "we detect anomalies." A workflow is "when an anomaly is detected, we automatically contain it, generate an incident narrative, and log it for compliance — without a human touching it." The workflow is what you price. The feature is what enables it.</p>
+            <ul>
+              <li>Map the specific workflow your buyer executes manually today, step by step</li>
+              <li>Identify the highest-cost or highest-risk step — that is your entry point</li>
+              <li>Build toward owning the end-to-end workflow; enter at the step where ROI is immediate and undeniable</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step__n">05</div>
+        <div>
+          <div class="step__title">Compress the seed-to-A arc with revenue proof</div>
+          <div class="step__body">
+            <p>Above Security: eight months old, ten employees, $43M Series A. Artemis: multiple seven-figure contracts closed before announcing. The playbook has shifted. The current structure is: seed → sell immediately → raise A on revenue evidence. Not: seed → build → find customers → raise A.</p>
+            <p>The investor language changed in 2026. Product-market fit is necessary but no longer sufficient. The current requirement is revenue with low-friction acquisition — demonstrated, not projected.</p>
+            <ul>
+              <li>Identify three to five design partners who will pay a nominal amount from day one</li>
+              <li>Build the minimum viable workflow that produces measurable ROI — not the full vision</li>
+              <li>Document every customer outcome in dollar terms from week one. That documentation is your Series A case</li>
+            </ul>
+            <div class="step__note"><strong>Current bar:</strong> By the time you announce a seed publicly, the narrative should include: "We have been generating revenue for N months." That sentence restructures every subsequent investor conversation.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step__n">06</div>
+        <div>
+          <div class="step__title">Position as infrastructure, not tooling</div>
+          <div class="step__body">
+            <p>Hilbert's a16z investment thesis is: LLMs are commoditised, the infrastructure layer underneath is the moat. That framing justifies infrastructure multiples (8–12× ARR) rather than tool multiples (3–5×). Pillar applies the same logic to financial risk — once embedded, it owns the execution substrate beneath every commodity decision the company makes.</p>
+            <p>The test: does your product become more valuable as more of the customer's data and workflows live in it? If yes, that is infrastructure — position, price, and sell it accordingly.</p>
+            <ul>
+              <li>Infrastructure contracts are sold to CFOs and CTOs, not department heads — know which room you are targeting</li>
+              <li>Infrastructure pricing is per-seat, percentage of flow, or ARR — not per-query or per-feature</li>
+              <li>The infrastructure framing requires demonstrating compounding value over time, not just feature completeness</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step__n">07</div>
+        <div>
+          <div class="step__title">The structural gap: operator-founders outside cybersecurity</div>
+          <div class="step__body">
+            <p>Seven of ten launches in this cohort are cybersecurity or AI infrastructure. That is where pedigree is most legible, investor conviction is highest, and deal velocity is fastest. It is also where competition is most acute.</p>
+            <p>The operator-founder template — deep institutional expertise plus direct experience as the underserved customer — is the most underrepresented formation pattern in this cohort. Pillar is the only example. It raised at a16z with the Uber CEO at seed. The template is validated and the replication opportunity is wide open across non-financial verticals.</p>
+            <ul>
+              <li>Verticals with structurally identical conditions to Pillar: SME manufacturing, logistics, agriculture, energy trading, professional services billing, healthcare operations, legal workflow</li>
+              <li>The formula: spend five or more years inside the problem at institutional level, understand both why the institutional solution exists and why the SME cannot access it, build the autonomous access layer</li>
+              <li>You do not need intelligence unit credentials. You need to have been the customer — operationally, with capital at risk</li>
+            </ul>
+            <div class="step__note"><strong>The open position for the remainder of 2026:</strong> Build the Pillar equivalent for a non-financial vertical where autonomous execution is newly viable — industrial supply chain, energy markets, professional services billing. All three have the same market structure. None have comparable venture competition.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="w">
+    <div class="footer__inner">
+      <span class="footer__name">Yashar Naghdi</span>
+      <div class="footer__meta">
+        Launch Intelligence · June 2026<br/>
+        Sources: Fortune, Axios, TechCrunch, Calcalist, PRNewswire, Crunchbase
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ── JS ─────────────────────────────────────────────── -->
+<script>
+// Theme — respects system preference, toggleable
+(function(){
+  const btn = document.querySelector('[data-theme-toggle]');
+  const root = document.documentElement;
+  const prefersDark = window.matchMedia('(prefers-color-scheme:dark)').matches;
+  let theme = prefersDark ? 'dark' : 'light';
+  root.setAttribute('data-theme', theme);
+  const MOON = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  const SUN  = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
+  if(btn){
+    btn.innerHTML = theme==='dark'?MOON:SUN;
+    btn.addEventListener('click',()=>{
+      theme = theme==='dark'?'light':'dark';
+      root.setAttribute('data-theme',theme);
+      btn.innerHTML = theme==='dark'?MOON:SUN;
+      btn.setAttribute('aria-label','Switch to '+(theme==='dark'?'light':'dark')+' mode');
+    });
+  }
+})();
+
+// Card expand/collapse
+function expand(btn){
+  const detail = btn.closest('.card__footer').nextElementSibling;
+  if(!detail) return;
+  const open = detail.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open.toString());
+  const svg = btn.querySelector('svg');
+  if(svg) svg.style.transform = open ? 'rotate(180deg)' : '';
+  btn.childNodes[0].textContent = open ? 'Close ' : 'Detail ';
+}
+
+// Search + sector filter
+const srch = document.getElementById('srchInput');
+const chips = document.querySelectorAll('.fchip[data-f]');
+const cards = document.querySelectorAll('#cardGrid .card');
+let activeF = 'all', term = '';
+
+function applyFilters(){
+  cards.forEach(c=>{
+    const s = c.dataset.s||'';
+    const hay = (c.dataset.q||'')+' '+(c.textContent||'');
+    const sOk = activeF==='all'||s===activeF;
+    const tOk = !term||hay.toLowerCase().includes(term);
+    c.style.display=(sOk&&tOk)?'':'none';
+  });
+}
+if(srch) srch.addEventListener('input',e=>{ term=e.target.value.toLowerCase().trim(); applyFilters(); });
+chips.forEach(ch=>ch.addEventListener('click',()=>{
+  chips.forEach(c=>c.classList.remove('on'));
+  ch.classList.add('on');
+  activeF=ch.dataset.f;
+  applyFilters();
+}));
+
+// Highlight active TOC item on scroll
+const secs = document.querySelectorAll('.section[id]');
+const links = document.querySelectorAll('.toc__link');
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      links.forEach(l=>{
+        const active = l.getAttribute('href')==='#'+e.target.id;
+        l.style.color = active ? 'var(--ac)' : '';
+        l.style.fontWeight = active ? '600' : '';
+      });
+    }
+  });
+},{rootMargin:'-20% 0px -70% 0px'});
+secs.forEach(s=>io.observe(s));
+</script>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+</script></body>
+</html>
