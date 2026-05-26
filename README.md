@@ -1,10 +1,6 @@
 # Yashar Naghdi | Senior Software Developer & AI Strategist
 
-> Building intelligent systems that bridge engineering excellence and business impact
-
-## What I Do
-
-I architect **end-to-end data platforms** and **solutions** for high-growth environments—from cloud infrastructure (AWS/GCP) to production-ready ML pipelines. My work spans **strategic consulting** (innovation, finance, analytics) and **hands-on engineering** (real-time optimization, predictive modeling, agentic integration).
+> Building intelligent systems that
 
 ## Core Focus
 
@@ -15,4 +11,4 @@ I architect **end-to-end data platforms** and **solutions** for high-growth envi
 
 ## Recent Build
 
-**CYGNET Energy** – Real-time carbon intensity intelligence platform ingesting ENTSO-E data with Streamlit dashboards and multi-country forecasting models.
+**CYGNET QA** – Real-time carbon intensity intelligence platform ingesting ENTSO-E data with Streamlit dashboards and multi-country forecasting models.
