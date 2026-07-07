@@ -1,12 +1,9 @@
-# Yashar Naghdi | Senior Software Developer & AI Strategist
+# Yashar| Developer| Strategist
 
-> Building intelligent systems that correspond to :
+> intelligent systems that correspond to
 
 **Analytics Architecture** • Designing scalable data ecosystems with PostgreSQL, S3, and serverless compute  
-**AI Engineering** • LSTM/SARIMA forecasting, NLP, recommendation systems, GenAI integration  
-**Strategic Consulting** • R&D tax credits (CIR/CII), product strategy, sustainability scoring frameworks  
-**Knowledge Transfer** • Data science instructor, GenAI author
-
-## Recent Build
-
-**CYGNET QA** carbon intensity intelligence platform ingesting ENTSO-E data with dashboards and multi-country forecasting models.
+**Engineering** • forecasting, NLP, recommendation systems, integration  
+**Strategic Consulting** • R&D tax credits , product strategy, sustainability scoring frameworks  
+**Knowledge Transfer** • science instructor, author
+**CYGNET** intelligence platform ingesting data with dashboards and multi-country forecasting models
