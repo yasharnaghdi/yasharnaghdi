@@ -1,4 +1,4 @@
-# Yashar| Developer| Strategist
+@yashar| Senior Software Engineer
 
 > intelligent systems that correspond to
 
