@@ -1,4 +1,4 @@
-@yashar| Senior Software Engineer
+Software Engineer
 
 > intelligent systems that correspond to
 
