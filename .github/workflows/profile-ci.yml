@@ -1,0 +1,25 @@
+name: Profile CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Validate Markdown and file structure
+        run: |
+          test -f README.md || (echo "README.md not found" && exit 1)
+          echo "Profile structure healthy"
