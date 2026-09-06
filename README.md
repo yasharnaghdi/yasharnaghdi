@@ -1,5 +1,7 @@
 # Yashar Naghdi
 
+[![Profile CI](https://github.com/yasharnaghdi/yasharnaghdi/actions/workflows/profile-ci.yml/badge.svg)](https://github.com/yasharnaghdi/yasharnaghdi/actions/workflows/profile-ci.yml)
+
 **Tech Lead & Solution Architect**  
 *AI Systems • Cloud & Data Platforms • Agentic Workflows*
 
